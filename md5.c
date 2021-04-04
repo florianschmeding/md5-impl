@@ -21,10 +21,7 @@
 
 uint32_t K[64];
 
-uint32_t A = 0x67452301;
-uint32_t B = 0xefcdab89;
-uint32_t C = 0x98badcfe;
-uint32_t D = 0x10325476;
+uint32_t A, B, C, D;
 uint32_t AA, BB, CC, DD;
 
 short shift[64] = {
@@ -142,6 +139,11 @@ char* md5_of_file(FILE* file)
         }
 
         uint32_t* buffer512bit = (uint32_t*)malloc(64);
+
+	A = 0x67452301;
+	B = 0xefcdab89;
+	C = 0x98badcfe;
+	D = 0x10325476;
 
         for(j = 0; j < num_of_512b_blocks; j++) // main hashloop
         {
